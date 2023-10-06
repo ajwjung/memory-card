@@ -1,6 +1,7 @@
 import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import Card from './Card';
+import Scoreboard from './Scoreboard';
 
 function App() {
   const [characterInfo, setCharacterInfo] = useState([]);
@@ -115,6 +116,10 @@ function App() {
 
   return (
     <>
+    <Scoreboard 
+      currentScore={scoreboard.current}
+      highestScore={scoreboard.highest}
+    />
       <div className="cardsContainer">
         {
           characterInfo.map(character => {
@@ -133,4 +138,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
