@@ -1,10 +1,42 @@
+:root {
+  --smaller-font: 0.9rem;
+  --larger-font: 1.2rem;
+  --small-padding: 1rem;
+  --gap-size: 1rem;
+  --border-radius: 5px;
+}
+
 #root {
   max-width: 100vw;
   text-align: center;
 }
 
+/* Styles the heading and scoreboard */
+.heading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-evenly;
+  font-size: var(--smaller-font);
+  padding: var(--small-padding);
+  gap: var(--gap-size);
+}
+
+.largeFont {
+  font-size: var(--larger-font);
+  font-weight: 600;
+  margin: 0;
+  grid-row: 1;
+  grid-column: 1 / span 3;
+}
+
+.intro {
+  grid-column: 1 / span 2;
+  text-align: left;
+}
+
+/* Styles the card container and cards */
 .cardsContainer {
-  padding: 1rem;
+  padding: var(--small-padding);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
@@ -14,19 +46,19 @@
   padding: 0.5rem;
   background: rgb(238, 238, 238);
   border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
 }
 
 .card > img {
   height: 100px;
   width: 90px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
 }
 
 .characterName {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: var(--smaller-font);
   line-height: 1rem;
   display: flex;
   align-items: center;
