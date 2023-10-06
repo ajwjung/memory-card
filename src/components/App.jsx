@@ -116,10 +116,16 @@ function App() {
 
   return (
     <>
-    <Scoreboard 
-      currentScore={scoreboard.current}
-      highestScore={scoreboard.highest}
-    />
+    <div className="heading">
+      <p className="largeFont">The titans are coming!</p>
+      <div className="intro">
+        Gather the team and gear up, now! Each person may only be called once, you must not fail. The fate of humanity lies in your hands.
+      </div>
+      <Scoreboard 
+        currentScore={scoreboard.current}
+        highestScore={scoreboard.highest}
+      />
+    </div>
       <div className="cardsContainer">
         {
           characterInfo.map(character => {
