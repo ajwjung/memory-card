@@ -1,19 +1,18 @@
-function Card({ characterName, srcUrl }) {
-    let formattedName;
+function Card({ characterName, srcUrl, onClick }) {
+    // let formattedName;
 
-    if (characterName.includes(", ")) {
-        const [lastName, firstName] = characterName.split(", ");
-        formattedName = `${firstName} ${lastName}`
-    } else {
-        formattedName = characterName;
-    }
+    // if (characterName.includes(", ")) {
+    //     const [lastName, firstName] = characterName.split(", ");
+    //     formattedName = `${firstName} ${lastName}`
+    // } else {
+    //     formattedName = characterName;
+    // }
 
     return (
-        <div className="card">
-            <img src={srcUrl} alt={formattedName} />
-            <p className="characterName">{formattedName}</p>
+        <div className="card" onClick={(e) => onClick(e)}>
+            <img src={srcUrl} alt={characterName} />
+            <p className="characterName">{characterName}</p>
         </div>
-
     )
 }
 
