@@ -2,6 +2,7 @@ import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import Scoreboard from './Scoreboard';
+import Data from '../scripts/Data';
 
 function App() {
   const [characterInfo, setCharacterInfo] = useState([]);
@@ -9,25 +10,6 @@ function App() {
     current: 0,
     highest: 0
   });
-
-  function sortByFavorites(a, b) {
-    if (a.favorites > b.favorites) return -1;
-    if (a.favorites < b.favorites) return 1;
-    return 0;
-  }
-
-  function formatName(name) {
-    let formattedName;
-
-    if (name.includes(", ")) {
-        const [lastName, firstName] = name.split(", ");
-        formattedName = `${firstName} ${lastName}`
-    } else {
-        formattedName = name;
-    }
-
-    return formattedName;
-  }
 
   useEffect(() => {
     let ignore = false;
@@ -39,13 +21,13 @@ function App() {
         return response.json();
       })
       .then(function (response) {
-        const sorted = response.data.sort(sortByFavorites).splice(0, 12);
+        const sorted = response.data.sort(Data.sortByFavorites).splice(0, 12);
         
         setCharacterInfo(
           sorted.map((charData, index) => {
             return {
               id: index,
-              name: formatName(charData.character.name),
+              name: Data.formatName(charData.character.name),
               src: charData.character.images.jpg.image_url,
               clicked: false,
             }
