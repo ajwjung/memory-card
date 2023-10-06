@@ -22,17 +22,17 @@ function App() {
       })
       .then(function (response) {
         const sorted = response.data.sort(Data.sortByFavorites).splice(0, 12);
-        
-        setCharacterInfo(
-          sorted.map((charData, index) => {
-            return {
-              id: index,
-              name: Data.formatName(charData.character.name),
-              src: charData.character.images.jpg.image_url,
-              clicked: false,
-            }
-          })
-        )
+        const updatedCharacterData = sorted.map((charData, index) => {
+          return {
+            id: index,
+            name: Data.formatName(charData.character.name),
+            src: charData.character.images.jpg.image_url,
+            clicked: false,
+          }
+        })
+        const shuffledCharacterData = Data.shuffleCards(updatedCharacterData);
+
+        setCharacterInfo(shuffledCharacterData);
       });
     }
 
@@ -68,29 +68,29 @@ function App() {
     
     // First time clicking on card - game continues
     if (!cardClickedStatus) {
-      setCharacterInfo(
-        characterInfo.map(char => {
-          if (char.name === cardName) {
-            return {
-              ...char,
-              clicked: true,
-            }
-          } else {
-            return char;
+      const updatedData = characterInfo.map(char => {
+        if (char.name === cardName) {
+          return {
+            ...char,
+            clicked: true,
           }
-        })
-      )
+        } else {
+          return char;
+        }
+      })
+
+      setCharacterInfo(Data.shuffleCards(updatedData));
     } else {
       // Card already clicked before - end game
       // Reset all cards' clicked status to false
-      setCharacterInfo(
-        characterInfo.map(char => {
-          return {
-            ...char,
-            clicked: false,
-          }
-        })
-      )
+      const resetData = characterInfo.map(char => {
+        return {
+          ...char,
+          clicked: false,
+        }
+      })
+
+      setCharacterInfo(Data.shuffleCards(resetData));
     }
 
     handleUpdateScores(cardClickedStatus);
