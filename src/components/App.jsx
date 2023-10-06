@@ -1,5 +1,6 @@
 import '../styles/App.css';
 import { useState, useEffect } from 'react';
+import Card from './Card';
 
 function App() {
   const [characterInfo, setCharacterInfo] = useState([]);
@@ -46,7 +47,19 @@ function App() {
 
   return (
     <>
-      <div>Hello, World!</div>
+      <div className="cardsContainer">
+        {
+          characterInfo.map(character => {
+            return (
+              <Card 
+                characterName={character.name}
+                srcUrl={character.src} 
+                key={character.id} 
+              />
+            )
+          })
+        }
+      </div>
     </>
   )
 }
