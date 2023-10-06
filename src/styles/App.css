@@ -7,7 +7,7 @@
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 10px;
 }
 
 .card {
