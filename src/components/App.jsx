@@ -2,7 +2,6 @@ import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import Heading from './Heading';
-import Scoreboard from './Scoreboard';
 import Popup from './Popup';
 import Data from '../scripts/Data';
 
@@ -137,16 +136,6 @@ function App() {
 
   return (
     <>
-      {/* <div className="heading">
-        <p className="largeFont">The titans are coming!</p>
-        <div className="intro">
-          Gather the team and gear up, now! We don't have time so you should only call each person once. The fate of humanity lies in your hands, you must not fail.
-        </div>
-        <Scoreboard 
-          currentScore={scoreboard.current}
-          highestScore={scoreboard.highest}
-        />
-      </div> */}
       <Heading scoreboard={scoreboard}/>
       <div className="cardsContainer">
         {
