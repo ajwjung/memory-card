@@ -1,15 +1,19 @@
 function Popup({ characterName, popupStyle, handleClosePopup }) {
+    const buttonText = ["I-I'm sorry!!", "I'll try my best!", "I won't fail next time!"];
+
     return (
         <>
             <div className="gameOverPopup" style={popupStyle}>
-                <p>You wasted precious time calling for {characterName} that you could have used to warn the others. The titans have closed in on us and many scouts and civilians have lost their lives. What do you think you're doing?!</p>
+                <p className="failure">YOU FAILED</p>
+                <p>You wasted precious time calling for {characterName} when you could have warned the others. The titans have closed in on us and many scouts and civilians have lost their lives. What do you think you're doing?!</p>
 
                 <button 
                     onClick={(e) => handleClosePopup(e)}
                     className="restart" 
                     type="button"
                 >
-                    I-I'm sorry! I'll try my best!!
+                    {/* Randomly choose what text to display */}
+                    {buttonText[Math.floor(Math.random() * buttonText.length)]}
                 </button>
             </div>
             <div className="overlay" style={popupStyle}></div>
