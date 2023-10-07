@@ -62,7 +62,7 @@ function App() {
           `url("${response.data[2].jpg.large_image_url}")`,
           `url("${response.data[8].jpg.large_image_url}")`
         ]
-
+        
         Data.updateBackgroundImage(backgroundImages, "continue");
       })
     }
@@ -70,7 +70,7 @@ function App() {
     return () => {
       ignore = true;
     }
-  })
+  }, [])
 
   function handleUpdateScores(cardPreviouslyClicked) {
     // Card not clicked on yet - game continues
@@ -121,9 +121,9 @@ function App() {
         }
       })
 
-      Data.updateBackgroundImage(backgroundImages, "end");
       setCharacterInfo(Data.shuffleCards(resetData));
       setPopupStyle({ display: "block" });
+      Data.updateBackgroundImage(backgroundImages, "end");
     }
 
     handleUpdateScores(cardClicked.clicked);
