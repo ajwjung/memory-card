@@ -103,7 +103,7 @@
 
 /* Styles the game over popup */
 .gameOverPopup {
-  background: rgba(255, 252, 252, 0.9);
+  background: rgba(255, 248, 247, 0.9);
   border: 2px solid var(--light-red);
   border-radius: 10px;
   box-shadow: 4px 4px var(--dark-red);
