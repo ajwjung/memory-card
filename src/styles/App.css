@@ -5,6 +5,10 @@
   --large-padding: 2rem;
   --gap-size: 1rem;
   --border-radius: 5px;
+  --light-red: rgb(167, 80, 80);
+  --dark-red: rgb(168, 29, 29);
+  --light-gray: rgb(238, 238, 238);
+  --gray: rgb(128, 128, 128);
 }
 
 #root {
@@ -46,8 +50,8 @@
 
 .card {
   padding: 0.5rem;
-  background: rgb(238, 238, 238);
-  border: 1px solid gray;
+  background: var(--light-gray);
+  border: 1px solid var(--gray);
   border-radius: var(--border-radius);
 }
 
@@ -70,8 +74,10 @@
 
 /* Styles the game over popup */
 .gameOverPopup {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 252, 252, 0.9);
+  border: 2px solid var(--light-red);
   border-radius: 10px;
+  box-shadow: 4px 4px var(--dark-red);
   padding: var(--large-padding);
 
   position: absolute;
@@ -82,13 +88,16 @@
   z-index: 5;
 }
 
-.gameOverPopup > p {
-  padding-bottom: 1rem;
+.failure {
+  font-weight: 600;
+  font-size: var(--larger-font);
+  color: var(--dark-red);
 }
 
 .restart {
-  background: rgb(205, 225, 255);
-  border: 1px solid rgb(62, 115, 228);
+  background: rgb(231, 204, 204);
+  border: 1px solid var(--dark-red);
+  margin-top: 1rem;
 }
 
 .overlay {
