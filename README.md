@@ -11,3 +11,15 @@ To build a memory game using React to practice using hooks to manage and utilize
 * CSS3
 * React
 * Vite
+
+## Playing the Memory Game
+
+The memory game shows 12 character cards from Attack on Titan and the player must try to click each card only once. The game ends when a card is picked a second time. The scoreboard displays the player's current score and highest score on the top right of the screen.
+
+## API
+
+All character data and images were fetched using [Jikan API](https://jikan.moe/), an open-source API that parses anime and manga information from [MyAnimeList](https://myanimelist.net/).
+
+## Author's Notes
+
+This project was a nice refresher on how to fetch from APIs and was great practice for using hooks in React. One feature I might choose to implement in the future is having different levels (e.g., easy, medium, hard) with fewer or more cards displayed per level. Another fun feature would be to change up the characters displayed each time so things stay fresh.
