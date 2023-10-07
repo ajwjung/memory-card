@@ -2,7 +2,10 @@ import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 import Scoreboard from './Scoreboard';
+import Popup from './Popup';
 import Data from '../scripts/Data';
+
+let repeatedClick;
 
 function App() {
   const [characterInfo, setCharacterInfo] = useState([]);
@@ -10,6 +13,7 @@ function App() {
     current: 0,
     highest: 0
   });
+  const [popupStyle, setPopupStyle] = useState({ display: "none" });
 
   useEffect(() => {
     let ignore = false;
@@ -64,10 +68,10 @@ function App() {
   function handleClick(e) {
     const clickedCard = e.target.closest(".card");
     const cardName = clickedCard.querySelector(".characterName").textContent;
-    const cardClickedStatus = characterInfo.find(char => char.name === cardName).clicked;
+    const cardClicked = characterInfo.find(char => char.name === cardName);
     
     // First time clicking on card - game continues
-    if (!cardClickedStatus) {
+    if (!cardClicked.clicked) {
       const updatedData = characterInfo.map(char => {
         if (char.name === cardName) {
           return {
@@ -83,6 +87,7 @@ function App() {
     } else {
       // Card already clicked before - end game
       // Reset all cards' clicked status to false
+      repeatedClick = cardClicked.name;
       const resetData = characterInfo.map(char => {
         return {
           ...char,
@@ -91,9 +96,11 @@ function App() {
       })
 
       setCharacterInfo(Data.shuffleCards(resetData));
+      setPopupStyle({ display: "block" })
     }
 
-    handleUpdateScores(cardClickedStatus);
+    handleUpdateScores(cardClicked.clicked);
+    console.log(repeatedClick)
   }
 
   return (
@@ -101,7 +108,7 @@ function App() {
       <div className="heading">
         <p className="largeFont">The titans are coming!</p>
         <div className="intro">
-          Gather the team and gear up, now! Each person may only be called once, you must not fail. The fate of humanity lies in your hands.
+          Gather the team and gear up, now! We don't have time so you should only call each person once. The fate of humanity lies in your hands, you must not fail.
         </div>
         <Scoreboard 
           currentScore={scoreboard.current}
@@ -122,6 +129,10 @@ function App() {
           })
         }
       </div>
+      <Popup 
+        characterName={repeatedClick}
+        popupStyle={popupStyle}
+      />
     </>
   )
 }
