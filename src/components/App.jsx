@@ -60,7 +60,8 @@ function App() {
         const rootDiv = document.getElementById("root");
         // Makes image appear opaque
         rootDiv.style.backgroundImage = `
-          
+          linear-gradient(rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2)),
           url("${response.data[2].jpg.large_image_url}")
         `
       })
