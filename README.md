@@ -1,6 +1,6 @@
-# Memory Game
+# Memory Card
 
-* Live Demo
+* [Live Demo](https://main--playful-rugelach-b76b6d.netlify.app/)
 
 ## Objective
 
