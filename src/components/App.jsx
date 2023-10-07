@@ -100,7 +100,10 @@ function App() {
     }
 
     handleUpdateScores(cardClicked.clicked);
-    console.log(repeatedClick)
+  }
+
+  function handleClosePopup(e) {
+    setPopupStyle({ display: "none" })
   }
 
   return (
@@ -132,6 +135,7 @@ function App() {
       <Popup 
         characterName={repeatedClick}
         popupStyle={popupStyle}
+        handleClosePopup={handleClosePopup}
       />
     </>
   )
