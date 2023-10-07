@@ -2,6 +2,7 @@
   --smaller-font: 0.9rem;
   --larger-font: 1.2rem;
   --small-padding: 1rem;
+  --large-padding: 2rem;
   --gap-size: 1rem;
   --border-radius: 5px;
 }
@@ -9,6 +10,7 @@
 #root {
   max-width: 100vw;
   text-align: center;
+  position: relative;
 }
 
 /* Styles the heading and scoreboard */
@@ -64,4 +66,37 @@
   align-items: center;
   justify-content: center;
   min-height: 30px;
+}
+
+/* Styles the game over popup */
+.gameOverPopup {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: var(--large-padding);
+
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.gameOverPopup > p {
+  padding-bottom: 1rem;
+}
+
+.restart {
+  background: rgb(205, 225, 255);
+  border: 1px solid rgb(62, 115, 228);
+}
+
+.overlay {
+  background: rgba(224, 224, 224, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
 }
