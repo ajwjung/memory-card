@@ -15,6 +15,7 @@ function App() {
   });
   const [popupStyle, setPopupStyle] = useState({ display: "none" });
 
+  // Fetch character data
   useEffect(() => {
     let ignore = false;
     if (!ignore) {
@@ -44,6 +45,32 @@ function App() {
       ignore = true;
     }
   }, []);
+
+  // Fetch background image link
+  useEffect(() => {
+    let ignore = false;
+    if (!ignore) {
+      fetch(`https://api.jikan.moe/v4/anime/16498/pictures`, {
+        mode: "cors",
+      })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function(response) {
+        const rootDiv = document.getElementById("root");
+        // Makes image appear opaque
+        rootDiv.style.backgroundImage = `
+          linear-gradient(rgba(255, 255, 255, 0.3), 
+          rgba(255, 255, 255, 0.3)),
+          url("${response.data[8].jpg.large_image_url}")
+        `
+      })
+    }
+
+    return () => {
+      ignore = true;
+    }
+  })
 
   function handleUpdateScores(cardPreviouslyClicked) {
     // Card not clicked on yet - game continues
