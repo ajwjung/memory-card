@@ -5,7 +5,7 @@ function Popup({ characterName, popupStyle, handleClosePopup }) {
         <>
             <div className="gameOverPopup" style={popupStyle}>
                 <p className="failure">YOU FAILED</p>
-                <p>You wasted precious time calling for {characterName} when you could have warned the others. The titans have closed in on us and many scouts and civilians have lost their lives. What do you think you're doing?!</p>
+                <p>You wasted precious time calling for {characterName} again when you could have warned the others. The titans have closed in on us and many scouts and civilians have lost their lives. What do you think you're doing?!</p>
 
                 <button 
                     onClick={handleClosePopup}
