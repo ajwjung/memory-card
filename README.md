@@ -4,7 +4,7 @@
 
 ## Objective
 
-To build a memory game using React to practice using hooks to manage and utilize states. The memory game involves having the player try to click each card only once and after each click, the cards are shuffled into a different order. The game ends when the player clicks on a card they have already clicked on before. Full details can be found on [The Odin Project's page](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
+To build a memory card game using React to practice using hooks to manage and utilize states. The memory game involves having the player try to click each card only once and after each click, the cards are shuffled into a different order. The game ends when the player clicks on a card they have already clicked on before. Full details can be found on [The Odin Project's page](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
 
 ## Built With
 
@@ -12,9 +12,9 @@ To build a memory game using React to practice using hooks to manage and utilize
 * React
 * Vite
 
-## Playing the Memory Game
+## Playing the Memory Card
 
-The memory game shows 12 character cards from Attack on Titan and the player must try to click each card only once. The game ends when a card is picked a second time. The scoreboard displays the player's current score and highest score on the top right of the screen.
+The memory card game shows 12 character cards from a popular anime and manga, [Attack on Titan](https://en.wikipedia.org/wiki/Attack_on_Titan). The player may only click on each card once, and the card order gets shuffled on each click. The game ends if and when a card is picked a second time. The scoreboard displays the player's current score and highest score on the top right of the screen.
 
 ## API
 
