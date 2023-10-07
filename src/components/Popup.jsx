@@ -8,7 +8,7 @@ function Popup({ characterName, popupStyle, handleClosePopup }) {
                 <p>You wasted precious time calling for {characterName} when you could have warned the others. The titans have closed in on us and many scouts and civilians have lost their lives. What do you think you're doing?!</p>
 
                 <button 
-                    onClick={(e) => handleClosePopup(e)}
+                    onClick={handleClosePopup}
                     className="restart" 
                     type="button"
                 >

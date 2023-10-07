@@ -102,7 +102,7 @@ function App() {
     handleUpdateScores(cardClicked.clicked);
   }
 
-  function handleClosePopup(e) {
+  function handleClosePopup() {
     setPopupStyle({ display: "none" })
   }
 
