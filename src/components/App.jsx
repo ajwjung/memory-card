@@ -6,6 +6,7 @@ import Popup from './Popup';
 import Data from '../scripts/Data';
 
 let repeatedClick;
+let backgroundImages = [];
 
 function App() {
   const [characterInfo, setCharacterInfo] = useState([]);
@@ -57,13 +58,12 @@ function App() {
         return response.json();
       })
       .then(function(response) {
-        const rootDiv = document.getElementById("root");
-        // Makes image appear opaque
-        rootDiv.style.backgroundImage = `
-          linear-gradient(rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.2)),
-          url("${response.data[2].jpg.large_image_url}")
-        `
+        backgroundImages = [
+          `url("${response.data[2].jpg.large_image_url}")`,
+          `url("${response.data[8].jpg.large_image_url}")`
+        ]
+
+        Data.updateBackgroundImage(backgroundImages, "continue");
       })
     }
 
@@ -97,7 +97,7 @@ function App() {
     const cardName = clickedCard.querySelector(".characterName").textContent;
     const cardClicked = characterInfo.find(char => char.name === cardName);
     
-    // First time clicking on card - game continues
+    // Game continues
     if (!cardClicked.clicked) {
       const updatedData = characterInfo.map(char => {
         if (char.name === cardName) {
@@ -112,8 +112,7 @@ function App() {
 
       setCharacterInfo(Data.shuffleCards(updatedData));
     } else {
-      // Card already clicked before - end game
-      // Reset all cards' clicked status to false
+      // Game over
       repeatedClick = cardClicked.name;
       const resetData = characterInfo.map(char => {
         return {
@@ -122,8 +121,9 @@ function App() {
         }
       })
 
+      Data.updateBackgroundImage(backgroundImages, "end");
       setCharacterInfo(Data.shuffleCards(resetData));
-      setPopupStyle({ display: "block" })
+      setPopupStyle({ display: "block" });
     }
 
     handleUpdateScores(cardClicked.clicked);
@@ -131,6 +131,7 @@ function App() {
 
   function handleClosePopup() {
     setPopupStyle({ display: "none" })
+    Data.updateBackgroundImage(backgroundImages, "continue");
   }
 
   return (

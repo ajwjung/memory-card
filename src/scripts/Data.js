@@ -36,8 +36,26 @@ const Data = (() => {
         return array;
     }
 
+    function updateBackgroundImage(images, gameStatus) {
+        const rootDiv = document.getElementById("root");
+
+        if (gameStatus === "continue") {
+            rootDiv.style.backgroundImage = `
+                linear-gradient(rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2)),
+                ${images[0]}
+            `;
+        } else if (gameStatus === "end") {
+            rootDiv.style.backgroundImage = `
+                linear-gradient(rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2)),
+                ${images[1]}
+            `;
+        }
+    }
+
     return {
-        sortByFavorites, formatName, shuffleCards
+        sortByFavorites, formatName, shuffleCards, updateBackgroundImage
     }
 })();
 
