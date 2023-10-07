@@ -5,16 +5,23 @@
   --large-padding: 2rem;
   --gap-size: 1rem;
   --border-radius: 5px;
+  --pink: rgb(231, 204, 204);
+  --dark-pink: rgb(221, 177, 177);
   --light-red: rgb(167, 80, 80);
   --dark-red: rgb(168, 29, 29);
   --light-gray: rgb(238, 238, 238);
   --gray: rgb(128, 128, 128);
+  --beige: rgb(219, 211, 194);
+  --dark-beige: rgb(158, 143, 110);
+  --green: rgb(183, 201, 180);
 }
 
 #root {
   max-width: 100vw;
   text-align: center;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Styles the heading and scoreboard */
@@ -50,9 +57,13 @@
 
 .card {
   padding: 0.5rem;
-  background: var(--light-gray);
-  border: 1px solid var(--gray);
+  background: var(--beige);
+  border: 1px solid var(--dark-beige);
   border-radius: var(--border-radius);
+}
+
+.card:hover {
+  background: var(--green);
 }
 
 .card > img {
@@ -95,9 +106,15 @@
 }
 
 .restart {
-  background: rgb(231, 204, 204);
+  background: var(--pink);
   border: 1px solid var(--dark-red);
   margin-top: 1rem;
+}
+
+.restart:hover {
+  text-transform: uppercase;
+  background: var(--dark-pink);
+  border: 1px solid var(--dark-red);
 }
 
 .overlay {
