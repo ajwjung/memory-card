@@ -12,7 +12,7 @@ To build a memory card game using React to practice using hooks to manage and ut
 * React
 * Vite
 
-## Playing the Memory Card
+## Playing the Memory Card Game
 
 The memory card game shows 12 character cards from a popular anime and manga, [Attack on Titan](https://en.wikipedia.org/wiki/Attack_on_Titan). The player may only click on each card once, and the card order gets shuffled on each click. The game ends if and when a card is picked a second time. The scoreboard displays the player's current score and highest score on the top right of the screen.
 
