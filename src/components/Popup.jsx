@@ -1,3 +1,5 @@
+import "../styles/Popup.css"
+
 function Popup({ characterName, popupStyle, handleClosePopup }) {
     const buttonText = ["I-I'm sorry!!", "I'll try my best!", "I won't fail next time!"];
 
