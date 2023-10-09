@@ -12,11 +12,7 @@
   --dark-pink: rgb(221, 177, 177);
   --light-red: rgb(167, 80, 80);
   --dark-red: rgb(139, 0, 0);
-  --light-gray: rgb(238, 238, 238);
-  --gray: rgb(128, 128, 128);
-  --beige: rgb(219, 211, 194);
-  --dark-beige: rgb(133, 111, 86);
-  --green: rgb(183, 201, 180);
+  --brown: rgb(34, 24, 20);
 }
 
 #root {
