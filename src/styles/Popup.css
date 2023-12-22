@@ -1,9 +1,6 @@
 /* Styles the game over popup */
 .gameOverPopup {
-    background: rgba(255, 248, 247, 0.9);
-    border: 2px solid var(--light-red);
     border-radius: 10px;
-    box-shadow: 4px 4px var(--dark-red);
     padding: var(--large-padding);
   
     position: absolute;
@@ -13,25 +10,63 @@
     transform: translate(-50%, -50%);
     z-index: 5;
 }
-  
+
+.success,
 .failure {
     font-weight: 600;
     font-size: var(--larger-font);
+}
+
+/* Styles for popup when user wins the game */
+.gameOverPopup.green {
+    background: rgba(252, 255, 247, 0.9);
+    border: 2px solid var(--light-green);
+    box-shadow: 4px 4px var(--dark-green);
+}
+
+.success {
+    color: var(--dark-green);
+}
+
+/* Styles for popup when user loses the game */
+.gameOverPopup.red {
+    background: rgba(255, 248, 247, 0.9);
+    border: 2px solid var(--light-red);
+    box-shadow: 4px 4px var(--dark-red);
+}
+
+.failure {
     color: var(--dark-red);
 }
+
+/* Styles for the restart/close popup button */
+/* User won game */
+.restart.green {
+    background: var(--leaf);
+    border: 1px solid var(--dark-green);
+    margin-top: var(--normal-padding);
+}
   
-.restart {
+.restart.green:hover {
+    text-transform: uppercase;
+    background: var(--grass);
+    border: 1px solid var(--dark-green);
+}
+
+/* User lost game */
+.restart.red {
     background: var(--pink);
     border: 1px solid var(--dark-red);
     margin-top: var(--normal-padding);
 }
   
-.restart:hover {
+.restart.red:hover {
     text-transform: uppercase;
     background: var(--dark-pink);
     border: 1px solid var(--dark-red);
 }
-  
+
+/* Styles for the popup overlay */
 .overlay {
     background: rgba(224, 224, 224, 0.5);
     position: absolute;

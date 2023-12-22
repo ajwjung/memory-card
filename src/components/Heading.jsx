@@ -1,5 +1,6 @@
-import "../styles/Heading.css";
+import PropTypes from "prop-types";
 import Scoreboard from "./Scoreboard";
+import "../styles/Heading.css";
 
 function Heading({ scoreboard }) {
     return (
@@ -15,6 +16,13 @@ function Heading({ scoreboard }) {
             />
         </div>
     )
+}
+
+Heading.propTypes = {
+    scoreboard: PropTypes.shape({
+        current: PropTypes.number,
+        highest: PropTypes.number,
+    }),
 }
 
 export default Heading;

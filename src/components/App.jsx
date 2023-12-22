@@ -15,6 +15,7 @@ function App() {
     highest: 0
   });
   const [popupStyle, setPopupStyle] = useState({ display: "none" });
+  const [gameover, setGameover] = useState(null);
 
   // Fetch character data
   useEffect(() => {
@@ -74,15 +75,21 @@ function App() {
 
   function handleUpdateScores(cardPreviouslyClicked) {
     // Card not clicked on yet - game continues
-    if (!cardPreviouslyClicked) {
+    if (!cardPreviouslyClicked && scoreboard.current + 1 < characterInfo.length) {
       setScoreboard({
         current: scoreboard.current + 1,
         highest: (scoreboard.current + 1 > scoreboard.highest)
           ? scoreboard.current + 1
           : scoreboard.highest
       })
+    } else if (!cardPreviouslyClicked) {
+      // Card not clicked on yet but it's the last one - end game (win)
+      setScoreboard({
+        current: 0,
+        highest: scoreboard.current + 1
+      })
     } else {
-      // Card already clicked on - end game
+      // Card already clicked on - end game (lose)
       setScoreboard({
         current: 0,
         highest: (scoreboard.current + 1 > scoreboard.highest)
@@ -92,13 +99,24 @@ function App() {
     }
   }
 
+  function resetUserData() {
+    const resetData = characterInfo.map(char => {
+      return {
+        ...char,
+        clicked: false,
+      }
+    });
+    
+    setCharacterInfo(Data.shuffleCards(resetData));
+  }
+
   function handleClick(e) {
     const clickedCard = e.target.closest(".card");
     const cardName = clickedCard.querySelector(".characterName").textContent;
     const cardClicked = characterInfo.find(char => char.name === cardName);
-    
+
     // Game continues
-    if (!cardClicked.clicked) {
+    if (!cardClicked.clicked && scoreboard.current + 1 < characterInfo.length) {
       const updatedData = characterInfo.map(char => {
         if (char.name === cardName) {
           return {
@@ -109,19 +127,19 @@ function App() {
           return char;
         }
       })
-
+      
       setCharacterInfo(Data.shuffleCards(updatedData));
+    } else if (!cardClicked.clicked && scoreboard.current + 1 === characterInfo.length) {
+      // User won - game over
+      resetUserData();
+      setGameover("win");
+      setPopupStyle({ display: "block" })
     } else {
-      // Game over
+      // User failed - game over
       repeatedClick = cardClicked.name;
-      const resetData = characterInfo.map(char => {
-        return {
-          ...char,
-          clicked: false,
-        }
-      })
 
-      setCharacterInfo(Data.shuffleCards(resetData));
+      setGameover("lose");
+      resetUserData();
       setPopupStyle({ display: "block" });
       Data.updateBackgroundImage(backgroundImages, "end");
     }
@@ -130,6 +148,7 @@ function App() {
   }
 
   function handleClosePopup() {
+    setGameover(null);
     setPopupStyle({ display: "none" })
     Data.updateBackgroundImage(backgroundImages, "continue");
   }
@@ -152,6 +171,7 @@ function App() {
         }
       </div>
       <Popup 
+        gameoverStatus={gameover}
         characterName={repeatedClick}
         popupStyle={popupStyle}
         handleClosePopup={handleClosePopup}
