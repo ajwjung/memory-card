@@ -52,6 +52,15 @@ const Data = (() => {
                 ${images[1]}
             `;
         }
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            rootDiv.style.removeProperty("background-image");
+            if (gameStatus === "continue") {
+                rootDiv.style.backgroundColor = `var(--dark-mode-dark-gray)`;
+            } else if (gameStatus === "end") {
+                rootDiv.style.backgroundColor = `var(--brown)`;
+            }
+        }
     }
 
     return {

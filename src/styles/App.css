@@ -8,12 +8,14 @@
   --large-padding: 2rem;
   --gap-size: 1rem;
   --border-radius: 5px;
+  --dark-mode-off-white: rgb(214, 214, 214);
   --pink: rgb(231, 204, 204);
   --dark-pink: rgb(221, 177, 177);
   --light-red: rgb(167, 80, 80);
   --dark-red: rgb(139, 0, 0);
   --leaf: rgb(210, 224, 206);
   --grass: rgb(182, 202, 182);
+  --apple: rgb(129, 190, 129);
   --light-green: rgb(40, 110, 40);
   --dark-green: rgb(7, 70, 7);
   --brown: rgb(34, 24, 20);
@@ -68,6 +70,7 @@
   justify-content: center;
 }
 
+/* Styles for small devices */
 @media (min-width: 480px) {
   .card > img {
     height: 200px
@@ -89,6 +92,7 @@
   }
 }
 
+/* Styles for tablets */
 @media (min-width: 800px) {
   .largeFont {
     font-size: var(--xl-font);
@@ -124,6 +128,7 @@
 
 }
 
+/* Styles for laptops */
 @media (min-width: 1000px) {
   #root {
     padding: 3rem;
@@ -141,6 +146,7 @@
 
 }
 
+/* Styles for larger viewports */
 @media (min-width: 1200px) {
   #root {
     padding: 4rem;
@@ -154,5 +160,22 @@
     padding: 4rem 10rem;
     grid-template-columns: repeat(6, 1fr);
     gap: var(--large-padding);
+  }
+}
+
+/* Styles for dark mode */
+@media (prefers-color-scheme: dark) {
+  .card,
+  .card:hover {
+    color: var(--dark-mode-off-white);
+    background: var(--dark-mode-black);
+  }
+  
+  .card:hover {
+    text-transform: uppercase;
+  }
+
+  .card > img {
+    filter: brightness(0.85) grayscale(1);
   }
 }

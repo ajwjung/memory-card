@@ -1,3 +1,10 @@
+:root {
+    --dark-mode-black: rgb(30, 30, 30);
+    --dark-mode-dark-gray: rgb(50, 50, 50);
+    --dark-mode-gray: rgb(65, 65, 65);
+    --dark-mode-light-gray: rgb(95, 95, 95);
+}
+
 /* Styles the game over popup */
 .gameOverPopup {
     border-radius: 10px;
@@ -75,4 +82,62 @@
     height: 100%;
     width: 100%;
     z-index: 3;
+}
+
+/* Styles for dark mode */
+@media (prefers-color-scheme: dark) {
+    .gameOverPopup.green,
+    .gameOverPopup.red {
+        background: var(--dark-mode-black);
+        border: 1px solid var(--dark-mode-gray);
+        box-shadow: 4px 4px var(--dark-mode-dark-gray);
+    }
+
+    .restart.green,
+    .restart.red {
+        background: var(--dark-mode-gray);
+    }
+
+    .restart.green:hover,
+    .restart.red:hover {
+        background: var(--dark-mode-dark-gray);
+    }
+
+    /* Styles for popup - win game */
+    .success,
+    .restart.green:hover {
+        color: var(--apple);
+    }
+
+    .gameOverPopup.green,
+    .restart.green {
+        color: var(--leaf);
+    }
+    
+    .restart.green {
+        border: 1px solid var(--leaf);
+    }
+
+    .restart.green:hover {
+        border: 1px solid var(--apple);
+    }
+
+    /* Styles for popup - lose game */
+    .failure {
+        color: var(--light-red);
+    }
+
+    .gameOverPopup.red,
+    .restart.red {
+        color: var(--pink);
+    }
+
+    .restart.red {
+        border: 1px solid var(--dark-pink);
+    }
+
+    .restart.red:hover {
+        color: var(--dark-pink);
+        border: 1px solid var(--light-red);
+    }
 }
